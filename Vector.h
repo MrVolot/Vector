@@ -82,7 +82,6 @@ namespace MyVector {
 
 	template <typename T>
 	void vector<T>::reAllocate(size_t cap) {
-		std::cout << "Realoc\n";
 		capacity_ = cap;// 1 2 3 
 		T* buffer{ static_cast<T*>(malloc(sizeof(T)*cap)) };
 		for (int i{}; i < size_; i++) {
