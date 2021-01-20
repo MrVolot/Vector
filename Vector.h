@@ -29,6 +29,7 @@ namespace MyVector {
 		void clear();
 		void swap(vector& vec);
 		void shrink_to_fit();
+		void insert(int pos, const T& value);
 	};
 	template <typename T>
 	vector<T>::vector() :size_{ 0 }, capacity_{ 1 } {
@@ -180,6 +181,7 @@ namespace MyVector {
 		}
 	}
 	template <typename T>
+<<<<<<< HEAD
 	void vector<T>::shrink_to_fit() {
 		capacity_ = size_;
 		T* temp=static_cast<T*>(malloc(size_*sizeof(T)));
@@ -192,4 +194,17 @@ namespace MyVector {
 		free(data_);
 		data_ = temp;
 	}
+=======
+	void vector<T>::insert(int pos, const T& value) {
+		if (capacity_ == size_) {
+			reAllocate(capacity_ * 2);
+		}
+		size_++;
+		for (int i = size_-1; i > pos; i--) {
+			data_[i]=data_[i-1];
+		}
+		data_[pos] = value;
+	}
+	
+>>>>>>> insert
 }
