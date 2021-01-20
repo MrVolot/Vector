@@ -181,7 +181,6 @@ namespace MyVector {
 		}
 	}
 	template <typename T>
-<<<<<<< HEAD
 	void vector<T>::shrink_to_fit() {
 		capacity_ = size_;
 		T* temp=static_cast<T*>(malloc(size_*sizeof(T)));
@@ -194,7 +193,7 @@ namespace MyVector {
 		free(data_);
 		data_ = temp;
 	}
-=======
+	template <typename T>
 	void vector<T>::insert(int pos, const T& value) {
 		if (capacity_ == size_) {
 			reAllocate(capacity_ * 2);
@@ -205,6 +204,4 @@ namespace MyVector {
 		}
 		data_[pos] = value;
 	}
-	
->>>>>>> insert
 }
