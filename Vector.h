@@ -9,7 +9,7 @@ namespace MyVector {
 		void copy(const T* member, size_t size);
 		void reAllocate(size_t cap);
 	public:
-		vector();
+		vector(); //This is a constructor
 		vector(const T& rhs);
 		vector(const std::initializer_list<T>& list);
 		vector(const MyVector::vector<T>& rhs);
