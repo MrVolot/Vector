@@ -19,12 +19,6 @@ namespace MyVector {
 		void push_back(T&& element);
 		template <typename ...Args>
 		void emplace_back(Args&&... args);
-		void print() {
-			for (int i{}; i < size_; ++i) {
-				std::cout << data_[i] << " ";
-			}
-			std::cout << std::endl;
-		}
 		T operator[](size_t num);
 		T* begin();
 		T* end();
@@ -34,6 +28,7 @@ namespace MyVector {
 		T& at(size_t number);
 		void clear();
 		void swap(vector& vec);
+		void shrink_to_fit();
 	};
 	template <typename T>
 	vector<T>::vector() :size_{ 0 }, capacity_{ 1 } {
@@ -185,6 +180,17 @@ namespace MyVector {
 			push_back(tmp[i]);
 		}
 	}
-
-	//make insert()
+	template <typename T>
+	void vector<T>::shrink_to_fit() {
+		capacity_ = size_;
+		T* temp=static_cast<T*>(malloc(size_*sizeof(T)));
+		for (size_t i = 0; i < size_; i++) {
+			temp[i] = data_[i];
+		}
+		for (size_t i = 0; i < size_; i++) {
+			data_[i].~T();
+		}
+		free(data_);
+		data_ = temp;
+	}
 }
