@@ -34,6 +34,7 @@ namespace MyVector {
 		T& at(size_t number);
 		void clear();
 		void swap(vector& vec);
+		void insert(int pos, const T& value);
 	};
 	template <typename T>
 	vector<T>::vector() :size_{ 0 }, capacity_{ 1 } {
@@ -185,6 +186,16 @@ namespace MyVector {
 			push_back(tmp[i]);
 		}
 	}
-
-	//make insert()
+	template <typename T>
+	void vector<T>::insert(int pos, const T& value) {
+		if (capacity_ == size_) {
+			reAllocate(capacity_ * 2);
+		}
+		size_++;
+		for (int i = size_-1; i > pos; i--) {
+			data_[i]=data_[i-1];
+		}
+		data_[pos] = value;
+	}
+	
 }
